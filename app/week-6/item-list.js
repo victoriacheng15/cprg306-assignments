@@ -1,37 +1,15 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Item from "./item";
+import itemsData from "./items.json";
 
 export default function ItemList() {
-  const [items, setItems] = useState([]);
-  const [originalItems, setOriginalItems] = useState([]);
+  const [items, setItems] = useState(itemsData);
   const [groupedView, setGroupedView] = useState(false);
   const [activeSort, setActiveSort] = useState("none");
 
   function sortedList(func) {
     return [...items].sort(func);
-  }
-
-  useEffect(() => {
-    async function fetchData() {
-      try {
-        const res = await fetch("/items.json");
-        const data = await res.json();
-
-        setOriginalItems(data);
-        setItems(data);
-      } catch (error) {
-        console.log(`Error fetching data: ${error}`);
-      }
-    }
-
-    fetchData();
-  }, []);
-
-  function reset() {
-    setGroupedView(false);
-    setActiveSort("reset");
-    setItems([...originalItems]);
   }
 
   function sortedByName() {
@@ -72,9 +50,6 @@ export default function ItemList() {
     <>
       <section className="flex gap-4 items-center p-4">
         <p>Sorted by:</p>
-        <Button activeSort={activeSort} onClick={reset}>
-          reset
-        </Button>
         <Button activeSort={activeSort} onClick={sortedByName}>
           name
         </Button>
