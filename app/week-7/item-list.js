@@ -62,7 +62,7 @@ export default function ItemList({ items = [] }) {
           activeSort={activeSort}
           onClick={() => {
             setGroupedView(true);
-            setActiveSort("grouped");
+            setActiveSort("grouped category");
           }}
         >
           grouped category
@@ -105,8 +105,8 @@ export default function ItemList({ items = [] }) {
 function Button({ onClick, children, activeSort }) {
   return (
     <button
-      className={`px-2 py-1 rounded-lg capitalize ${
-        activeSort === children ? "bg-green-800" : "bg-green-600"
+      className={`px-2 py-1 rounded-lg capitalize text-gray-900 hover:bg-orange-400 duration-300 ease-in-out ${
+        activeSort === children ? "bg-orange-500" : "bg-orange-700"
       }`}
       onClick={onClick}
     >
