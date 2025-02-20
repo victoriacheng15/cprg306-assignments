@@ -99,19 +99,23 @@ export default function MealIdeas({ ingredient }) {
         {mealIdeas.map(({ idMeal, strMeal }) => (
           <li
             key={idMeal}
-            className="bg-slate-900 p-2 rounded-lg cursor-pointer hover:bg-orange-800 duratino-300 ease-in-out"
+            className="bg-slate-900 p-2 rounded-lg cursor-pointer hover:bg-gray-800 duratino-300 ease-in-out"
             onClick={() => handleMealClick(idMeal)}
           >
-            <p className="font-semibold">{strMeal}</p>
+            <p className="font-bold text-xl mb-4">{strMeal}</p>
             {selectedMeal === idMeal && (
               <ul className="pl-4">
-                <p className="capitalize font-bold">ingredients:</p>
+                <p className="capitalize italic text-orange-600">
+                  ingredients:
+                </p>
                 {ingredientLoading && <li>Loading ingredients...</li>}
                 {ingredientsError && (
                   <li style={{ color: "red" }}>Error: {ingredientsError}</li>
                 )}
                 {ingredients.map((ingredient) => (
-                  <li key={ingredient}>{ingredient}</li>
+                  <li className="ml-5" key={ingredient}>
+                    {ingredient}
+                  </li>
                 ))}
               </ul>
             )}
