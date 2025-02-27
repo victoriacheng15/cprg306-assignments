@@ -9,6 +9,7 @@ export default function Home() {
     "week-6",
     "week-7",
     "week-8",
+    "week-9",
   ];
 
   return (
